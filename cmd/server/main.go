@@ -69,5 +69,8 @@ func main() {
 	r.HandleFunc("/employees", EmployeeCreateHandler).Methods("POST")
 	// r.HandleFunc("/employees", EmployeesHandler)
 
-	http.ListenAndServe("localhost:8000", r)
+	log.Println("Starting server...")
+	err := http.ListenAndServe("localhost:8000", r)
+
+	log.Fatalln(err)
 }
