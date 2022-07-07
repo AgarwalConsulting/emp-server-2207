@@ -18,3 +18,11 @@ Update    |       Update          |      PUT          |   /employees/{id}   |   
 Update    |       Update          |      PATCH        |   /employees/{id}   |            {some attrs}         |       {...} / -
 Destroy   |       Destroy         |      DELETE       |   /employees/{id}   |               -                 |       {...} / -
 ```
+
+---
+
+## Architecture
+
+MVC => {Model, View, Controller}
+
+Clean-code Architecture => {Entity, Repository, Transport [HTTP, gRPC, ...], Service}
