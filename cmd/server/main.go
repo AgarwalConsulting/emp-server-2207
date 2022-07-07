@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 
 	empHTTP "algogrit.com/emp-server/employees/http"
@@ -28,7 +30,7 @@ func main() {
 	empHandler.SetupRoutes(r)
 
 	log.Println("Starting server...")
-	err := http.ListenAndServe(":8000", r)
+	err := http.ListenAndServe(":8000", handlers.LoggingHandler(os.Stdout, r))
 
 	log.Fatalln(err)
 }
