@@ -28,7 +28,7 @@ func main() {
 	empHandler.SetupRoutes(r)
 
 	log.Println("Starting server...")
-	err := http.ListenAndServe("localhost:8000", r)
+	err := http.ListenAndServe(":8000", r)
 
 	log.Fatalln(err)
 }
