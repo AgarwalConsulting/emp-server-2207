@@ -13,6 +13,7 @@ import (
 
 func TestIndex(t *testing.T) {
 	ctrl := gomock.NewController(t)
+	defer ctrl.Finish()
 	mockRepo := repository.NewMockEmployeeRepository(ctrl)
 
 	sut := service.NewV1(mockRepo)
