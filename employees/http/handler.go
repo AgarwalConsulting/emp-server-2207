@@ -7,13 +7,13 @@ import (
 )
 
 type EmployeeHandler struct {
-	*mux.Router
-	svcV1 service.EmployeeService
+	*mux.Router // Embeds => Inheritance!
+	svcV1       service.EmployeeService
 }
 
 func (h *EmployeeHandler) SetupRoutes(r *mux.Router) {
-	r.HandleFunc("/v1/employees", h.IndexV1).Methods("GET")
-	r.HandleFunc("/v1/employees", h.CreateV1).Methods("POST")
+	r.HandleFunc("/v1/employees", h.indexV1).Methods("GET")
+	r.HandleFunc("/v1/employees", h.createV1).Methods("POST")
 
 	h.Router = r
 }
