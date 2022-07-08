@@ -8,6 +8,7 @@ import (
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
+	_ "github.com/lib/pq"
 
 	empHTTP "algogrit.com/emp-server/employees/http"
 	"algogrit.com/emp-server/employees/repository"
@@ -15,7 +16,8 @@ import (
 )
 
 func main() {
-	var empRepo = repository.NewInMem()
+	var empRepo = repository.NewSQL("postgres", "postgres://localhost:5432/emp-demo?sslmode=disable")
+	// var empRepo = repository.NewInMem()
 	var empSvcV1 = service.NewV1(empRepo)
 	var empHandler = empHTTP.NewHandler(empSvcV1)
 
