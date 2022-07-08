@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: emp-service
+  name: emp-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: emp-service
+  template:
+    metadata:
+      labels:
+        app: emp-service
+    spec:
+      containers:
+      - image: gauravagarwalr/emp-server
+        imagePullPolicy: Always
+        name: emp-server
+        env:
+          - name: PORT
+            value: "9000"
+        resources: {}
+
+---

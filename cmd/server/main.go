@@ -41,8 +41,8 @@ func init() {
 }
 
 func main() {
-	var empRepo = repository.NewSQL(dbDriver, dbConn)
-	// var empRepo = repository.NewInMem()
+	// var empRepo = repository.NewSQL(dbDriver, dbConn)
+	var empRepo = repository.NewInMem()
 	var empSvcV1 = service.NewV1(empRepo)
 	var empHandler = empHTTP.NewHandler(empSvcV1)
 
